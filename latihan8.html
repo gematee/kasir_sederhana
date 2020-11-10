@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="nama">Nama Pemesan</label> <br>
+        <input type="text" id="nama"> <br>
+        <label for="menu">Menu Pesanan</label><br>
+        <select name="menu" id="menu" onchange="pilihmenu()"> <br>
+            <option value="" selected>Pilih Menu</option>
+            <option value="nasgor">Nasgor</option>
+            <option value="batagor">Batagor</option>
+            <option value="basgor">Basgor</option>
+        </select> <br>
+        <label for="harga">Harga</label><br>
+        <input type="text" id="harga" readonly><br>
+        <label for="jumlah">Jumlah Pesanan</label><br>
+        <input type="text" id="jumlah"><br>
+        <input type="button" id="buat" value="Buat Pesanan" onclick="hasilpesanan()">
+    </form>
+</body>
+<script>
+    function pilihmenu() { 
+        var pesanmenu = document.getElementById("menu").value;
+        if(pesanmenu == "nasgor") {
+            document.getElementById("harga").value = 10000;
+        }
+        else if(pesanmenu == "batagor") {
+            document.getElementById("harga").value = 7000;
+        }
+        else if(pesanmenu == "basgor") {
+            document.getElementById("harga").value = 5000;
+        }
+    }
+    function hasilpesanan() {
+        var nama = document.getElementById("nama").value;
+        var menu = document.getElementById("menu").value;
+        var harga = document.getElementById("harga").value;
+        var jumlah = document.getElementById("jumlah").value;
+        var total = harga*jumlah;
+
+        document.write("<table border='1'>");
+        document.write("<tr>");
+        document.write("<td>Nama</td>");
+        document.write(`<td>${nama}</td>`);
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>Menu</td>");
+        document.write(`<td>${menu}</td>`);
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>Harga</td>");
+        document.write(`<td>${harga}</td>`);
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>Jumlah</td>");
+        document.write(`<td>${jumlah}</td>`);
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>Total</td>");
+        document.write(`<td>${total}</td>`);
+        document.write("</tr>");
+        document.write("</table>");
+    }
+
+</script>
+</html>
